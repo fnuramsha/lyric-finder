@@ -1,10 +1,20 @@
 import { createContext, useState } from "react";
+import axios from "axios";
 
-export const tracksContext = createContext();
+const getData = () => {
+  axios
+    .get()
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+
+export const tracksContext = createContext({
+  tracks: 10,
+});
 
 export const TracksProvider = ({ children }) => {
-  const [val, setVal] = useState("");
-  const value = { val, setVal };
+  const [trackList, setTrackList] = useState(tracks);
+  const value = { trackList, setTrackList };
   return (
     <tracksContext.Provider value={value}> {children} </tracksContext.Provider>
   );
