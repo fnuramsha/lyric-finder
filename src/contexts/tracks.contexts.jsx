@@ -16,7 +16,7 @@ const getData = async (trackList) => {
 };
 
 export const tracksContext = createContext({
-  tracksList: 0,
+  tracksList: [],
 });
 
 export const TracksProvider = ({ children }) => {
