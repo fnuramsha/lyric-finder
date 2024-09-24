@@ -24,14 +24,14 @@ export const TracksProvider = ({ children }) => {
   const [trackList, setTrackList] = useState([]);
 
   //helper function
-  const helperFunc = async () => {
-    const updatedTrackList = await getData();
+  //   const helperFunc = async () => {
+  //     const updatedTrackList = await getData();
 
-    setTrackList(updatedTrackList);
-    console.log(updatedTrackList);
-  };
+  //     setTrackList(updatedTrackList);
+  //     console.log(updatedTrackList);
+  //   };
 
-  const value = { trackList, setTrackList, getData, helperFunc };
+  const value = { trackList, setTrackList, getData };
   return (
     <tracksContext.Provider value={value}> {children} </tracksContext.Provider>
   );
