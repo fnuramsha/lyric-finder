@@ -8,7 +8,7 @@ const getData = async () => {
     );
 
     const trackList = response.data.message.body.track_list;
-    // console.log(trackList);
+    console.log(trackList);
 
     return trackList;
   } catch (error) {
@@ -23,13 +23,12 @@ export const tracksContext = createContext({
 export const TracksProvider = ({ children }) => {
   const [trackList, setTrackList] = useState([]);
 
-  //helper function
-  //   const helperFunc = async () => {
-  //     const updatedTrackList = await getData();
+  // const helperFunc = async () => {
+  //   const updatedTrackList = await getData();
 
-  //     setTrackList(updatedTrackList);
-  //     console.log(updatedTrackList);
-  //   };
+  //   setTrackList(updatedTrackList);
+  //   console.log(updatedTrackList);
+  // };
 
   const value = { trackList, setTrackList, getData };
   return (

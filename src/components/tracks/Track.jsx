@@ -6,7 +6,7 @@ const Track = (props) => {
     <div className="col-md-6">
       <div className="card mb-5">
         <div className="card-body">
-          <h5>{track.artisit_name}</h5>
+          <h5>{track.artist_name}</h5>
         </div>
       </div>
     </div>
