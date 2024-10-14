@@ -12,7 +12,10 @@ const getData = async () => {
 
     return trackList;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error(
+      "Error fetching data:",
+      error.response ? error.response.data : error.message
+    );
   }
 };
 

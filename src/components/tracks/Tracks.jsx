@@ -4,17 +4,13 @@ import Spinner from "../../components/layout/spinner";
 import Track from "./Track";
 
 const Tracks = () => {
-  const { getData, trackList, setTrackList, helperFunc } =
-    useContext(tracksContext);
+  const { getData, trackList, setTrackList } = useContext(tracksContext);
 
-  //debugging code
-  const displayTracks = () => {
-    helperFunc();
-  };
   useEffect(() => {
     // call the function when the component mounts
     const fetchData = async () => {
-      await getData(trackList);
+      const updatedCartList = await getData(trackList);
+      setTrackList(updatedCartList);
     };
     fetchData();
   }, []);
@@ -22,10 +18,11 @@ const Tracks = () => {
   return (
     <div className="text-center">
       <h3>Top 10 Tracks</h3>
-      <div className="row"></div>
-      {trackList.map((track) => {
-        <Track key={track.track_id} track={track} />;
-      })}
+      <div className="row">
+        {trackList.map((item) => {
+          return <Track key={item.track.track_id} track={item.track} />;
+        })}
+      </div>
     </div>
   );
 };
