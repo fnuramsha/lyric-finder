@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Track = (props) => {
   const { track } = props;
@@ -22,6 +23,12 @@ const Track = (props) => {
             </strong>
             {track.album_name}{" "}
           </p>
+          <Link
+            to={`lyrics/track/${track.track_id}`}
+            className="btn btn-dark btn-block"
+          >
+            <i className="fas fa-chevron-right"></i> View Lyrics
+          </Link>
         </div>
       </div>
     </div>
