@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import Spinner from "../../components/layout/spinner";
 import Track from "./Track";
+import Lyrics from "./Lyrics";
 
 const Tracks = () => {
   const { getData, trackList, setTrackList } = useContext(tracksContext);
