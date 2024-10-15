@@ -17,12 +17,18 @@ const Tracks = () => {
 
   return (
     <div className="text-center">
-      <h3>Top 10 Tracks</h3>
-      <div className="row">
-        {trackList.map((item) => {
-          return <Track key={item.track.track_id} track={item.track} />;
-        })}
-      </div>
+      {trackList === undefined || trackList.length === 0 ? (
+        <Spinner />
+      ) : (
+        <>
+          <h3>Top 10 Tracks</h3>
+          <div className="row">
+            {trackList.map((item) => {
+              return <Track key={item.track.track_id} track={item.track} />;
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };
