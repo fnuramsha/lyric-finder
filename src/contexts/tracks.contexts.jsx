@@ -8,9 +8,27 @@ const getData = async () => {
     );
 
     const trackList = response.data.message.body.track_list;
-    console.log(trackList);
+    // console.log(trackList);
+    // console.log(response);
 
     return trackList;
+  } catch (error) {
+    console.error(
+      "Error fetching data:",
+      error.response ? error.response.data : error.message
+    );
+  }
+};
+
+const getLyrics = async (id) => {
+  try {
+    const response = await axios.get(
+      `http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MM_KEY}`
+    );
+    //console.log(response);
+    const lyrics = response.data.message.body.lyrics;
+    console.log(lyrics);
+    return lyrics;
   } catch (error) {
     console.error(
       "Error fetching data:",
@@ -25,15 +43,16 @@ export const tracksContext = createContext({
 
 export const TracksProvider = ({ children }) => {
   const [trackList, setTrackList] = useState([]);
+  const [lyrics, setLyrics] = useState([]);
 
-  // const helperFunc = async () => {
-  //   const updatedTrackList = await getData();
-
-  //   setTrackList(updatedTrackList);
-  //   console.log(updatedTrackList);
-  // };
-
-  const value = { trackList, setTrackList, getData };
+  const value = {
+    trackList,
+    setTrackList,
+    getData,
+    getLyrics,
+    lyrics,
+    setLyrics,
+  };
   return (
     <tracksContext.Provider value={value}> {children} </tracksContext.Provider>
   );

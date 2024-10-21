@@ -5,7 +5,8 @@ import Track from "./Track";
 import Lyrics from "./Lyrics";
 
 const Tracks = () => {
-  const { getData, trackList, setTrackList } = useContext(tracksContext);
+  const { getData, trackList, setTrackList, setLyrics, getLyrics } =
+    useContext(tracksContext);
 
   useEffect(() => {
     // call the function when the component mounts
@@ -27,6 +28,7 @@ const Tracks = () => {
             {trackList.map((item) => {
               return <Track key={item.track.track_id} track={item.track} />;
             })}
+            <Lyrics />
           </div>
         </>
       )}
