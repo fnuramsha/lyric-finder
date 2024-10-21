@@ -25,7 +25,7 @@ const getLyrics = async (id) => {
     const response = await axios.get(
       `http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MM_KEY}`
     );
-    //console.log(response);
+
     const lyrics = response.data.message.body.lyrics;
     console.log(lyrics);
     return lyrics;

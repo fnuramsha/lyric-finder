@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import { useParams } from "react-router-dom";
+import Lyric from "./Lyric";
 
-const Lyrics = (props) => {
-  const { lyric } = props;
-
-  const { getLyrics, setLyrics } = useContext(tracksContext);
+const Lyrics = () => {
+  const { getLyrics, setLyrics, lyrics } = useContext(tracksContext);
   const { id } = useParams();
   console.log("Checking Id", id);
 
@@ -13,13 +12,16 @@ const Lyrics = (props) => {
     const fetchLyrics = async () => {
       const updatedLyricsData = await getLyrics(id);
       setLyrics(updatedLyricsData);
+      console.log("Fetched Lyrics Data:", updatedLyricsData);
     };
     fetchLyrics();
   }, []);
 
   return (
     <div>
-      <h1> {Lyrics.lyrics_body} </h1>
+      <h5>
+        <Lyric lyric={lyrics} />
+      </h5>
     </div>
   );
 };
