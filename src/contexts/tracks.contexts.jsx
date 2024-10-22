@@ -8,7 +8,7 @@ const getData = async () => {
     );
 
     const trackList = response.data.message.body.track_list;
-    // console.log(trackList);
+    console.log("tracklist from context", trackList);
     // console.log(response);
 
     return trackList;
@@ -38,7 +38,7 @@ const getLyrics = async (id) => {
 };
 
 export const tracksContext = createContext({
-  tracksList: [],
+  trackList: [],
 });
 
 export const TracksProvider = ({ children }) => {

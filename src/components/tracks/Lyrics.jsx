@@ -4,9 +4,13 @@ import { useParams } from "react-router-dom";
 import Lyric from "./Lyric";
 
 const Lyrics = () => {
-  const { getLyrics, setLyrics, lyrics } = useContext(tracksContext);
+  const { getLyrics, setLyrics, lyrics, trackList } = useContext(tracksContext);
   const { id } = useParams();
   console.log("Checking Id", id);
+  console.log("checking tracklist", trackList);
+  const track = trackList.find(function (trackListItem) {
+    return trackListItem.track.track_id === parseInt(id);
+  });
 
   useEffect(() => {
     const fetchLyrics = async () => {
@@ -20,7 +24,7 @@ const Lyrics = () => {
   return (
     <div>
       <h5>
-        <Lyric lyric={lyrics} />
+        <Lyric lyric={lyrics} track={track} />
       </h5>
     </div>
   );
