@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import Spinner from "../layout/spinner";
+import Moment from "react-moment";
 
 const Lyric = (props) => {
   const { lyric, track } = props;
   const { trackList } = useContext(tracksContext);
   console.log("tracklist in lyric component", trackList);
-  console.log("now track name", track.track.track_name);
+  console.log("now track name", track);
 
   return (
     <>
@@ -30,7 +31,29 @@ const Lyric = (props) => {
                   {track.track.artist_name}
                 </span>
                 <p className="mt-2 card-text">{lyric.lyrics_body}</p>
-                <strong> Album ID</strong> : {track.track.album_id}
+                <ul className="list-group mt-3">
+                  <li>
+                    <strong> Album ID</strong> : {track.track.album_id}
+                  </li>
+                  <li>
+                    <strong> Song Genre</strong> :
+                    {
+                      track.track.primary_genres.music_genre_list[0].music_genre
+                        .music_genre_name
+                    }
+                  </li>
+                  <li>
+                    {" "}
+                    <strong> Explicit words </strong> :{" "}
+                    {track.explicit === 0 ? "No" : "Yes"}
+                  </li>
+                  <li>
+                    <strong> Updated date </strong> :{" "}
+                    <Moment format="DD.MM.YYYY">
+                      {track.track.updated_time}
+                    </Moment>
+                  </li>
+                </ul>
               </div>
             </div>
           </>
