@@ -44,6 +44,7 @@ export const tracksContext = createContext({
 export const TracksProvider = ({ children }) => {
   const [trackList, setTrackList] = useState([]);
   const [lyrics, setLyrics] = useState([]);
+  const [userInputValues, setUserInputValues] = useState("");
 
   const value = {
     trackList,
@@ -52,6 +53,8 @@ export const TracksProvider = ({ children }) => {
     getLyrics,
     lyrics,
     setLyrics,
+    userInputValues,
+    setUserInputValues,
   };
   return (
     <tracksContext.Provider value={value}> {children} </tracksContext.Provider>

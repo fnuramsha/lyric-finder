@@ -12,7 +12,14 @@ function App() {
       <NavBar />
       {/* <Tracks /> */}
       <Routes>
-        <Route path="/" element={<Tracks />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Search /> <Tracks />
+            </>
+          }
+        />
         <Route path="/lyrics/track/:id" element={<Lyrics />} />
         <Route path="/" element={<Search />} />
       </Routes>
