@@ -2,29 +2,39 @@ import { tracksContext } from "../../contexts/tracks.contexts";
 import { useContext } from "react";
 
 const Search = () => {
-  const { userInputValues, setUserInputValues } = useContext(tracksContext);
+  const { userInputValues, setUserInputValues, getSearchedLyrics } =
+    useContext(tracksContext);
 
   const changeHandler = (e) => {
-    setUserInputValues({ ...userInputValues, [e.target.name]: e.target.value });
+    setUserInputValues({ [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    getSearchedLyrics(userInputValues);
   };
   return (
     <div className="text-center">
-      <h2>
-        <i className="fas fa-music"></i>
-        Search For A Song{" "}
-      </h2>
+      <h2> Search for a song </h2>
       <p>Get the lyrics for any song</p>
       <form>
         <div className="form-group">
           <input
             type="text"
-            className="form-control form-control-lg"
             placeholder="Song title..."
-            onChange={changeHandler}
             name="search"
             value={userInputValues.search}
+            onChange={changeHandler}
           />
         </div>
+
+        <button
+          className="btn btn-secondary btn-sm btn-block mb-5 mt-3"
+          type="submit"
+          onClick={submitHandler}
+        >
+          Get Track Lyrics
+        </button>
       </form>
     </div>
   );
