@@ -1,6 +1,6 @@
 import { tracksContext } from "../../contexts/tracks.contexts";
 import { useContext } from "react";
-import SearchResults from "./SearchResults";
+import Track from "./Track";
 
 const Search = () => {
   const {
@@ -9,6 +9,7 @@ const Search = () => {
     getSearchedLyrics,
     userInputValue,
     setUserInputValues,
+    setTrackList,
   } = useContext(tracksContext);
 
   const changeHandler = (e) => {
@@ -17,6 +18,7 @@ const Search = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setTrackList("");
     const updatedCartList = await getSearchedLyrics(userInputValue);
     setSearchedTrackList(updatedCartList);
     console.log("searched track list", searchedTrackList);
@@ -46,9 +48,7 @@ const Search = () => {
 
         <div className="row">
           {searchedTrackList.map((item) => {
-            return (
-              <SearchResults key={item.track.track_id} search={item.track} />
-            );
+            return <Track key={item.track.track_id} track={item.track} />;
           })}
         </div>
       </form>

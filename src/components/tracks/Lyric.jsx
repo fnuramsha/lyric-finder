@@ -6,9 +6,6 @@ import Moment from "react-moment";
 
 const Lyric = (props) => {
   const { lyric, track } = props;
-  const { trackList } = useContext(tracksContext);
-  console.log("tracklist in lyric component", trackList);
-  console.log("now track name", track);
 
   return (
     <>
