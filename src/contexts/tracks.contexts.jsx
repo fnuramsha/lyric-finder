@@ -40,10 +40,11 @@ const getLyrics = async (id) => {
 const getSearchedLyrics = async (userInputValues) => {
   try {
     const response = await axios.get(
-      `http://api.musixmatch.com/ws/1.1/track.search?q_track=${userInputValues}&s_track_rating=desc&page_size=12&apikey=${process.env.REACT_APP_MM_KEY}`
+      `http://api.musixmatch.com/ws/1.1/track.search?q_track=${userInputValues}&s_track_rating=desc&page_size=8&apikey=${process.env.REACT_APP_MM_KEY}`
     );
-    const searchResults = response.data.message.body;
+    const searchResults = response.data.message.body.track_list;
     console.log(searchResults);
+    return searchResults;
   } catch (error) {
     console.error(error.message);
   }
@@ -56,7 +57,8 @@ export const tracksContext = createContext({
 export const TracksProvider = ({ children }) => {
   const [trackList, setTrackList] = useState([]);
   const [lyrics, setLyrics] = useState([]);
-  const [userInputValues, setUserInputValues] = useState("");
+  const [userInputValue, setUserInputValues] = useState("");
+  const [searchedTrackList, setSearchedTrackList] = useState([]);
 
   const value = {
     trackList,
@@ -65,9 +67,11 @@ export const TracksProvider = ({ children }) => {
     getLyrics,
     lyrics,
     setLyrics,
-    userInputValues,
-    setUserInputValues,
+    searchedTrackList,
+    setSearchedTrackList,
     getSearchedLyrics,
+    userInputValue,
+    setUserInputValues,
   };
   return (
     <tracksContext.Provider value={value}> {children} </tracksContext.Provider>
