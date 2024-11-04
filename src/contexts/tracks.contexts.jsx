@@ -26,8 +26,8 @@ const getLyrics = async (id) => {
       `http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MM_KEY}`
     );
 
-    const lyrics = response.data.message.body.lyrics;
-    console.log(lyrics);
+    const lyrics = response.data.message.body;
+    console.log("my lyrics", lyrics);
     return lyrics;
   } catch (error) {
     console.error(
@@ -43,7 +43,7 @@ const getSearchedLyrics = async (userInputValues) => {
       `http://api.musixmatch.com/ws/1.1/track.search?q_track=${userInputValues}&s_track_rating=desc&page_size=8&apikey=${process.env.REACT_APP_MM_KEY}`
     );
     const searchResults = response.data.message.body.track_list;
-    console.log(searchResults);
+    console.log("search results", searchResults);
     return searchResults;
   } catch (error) {
     console.error(error.message);

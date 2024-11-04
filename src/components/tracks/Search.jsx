@@ -1,6 +1,9 @@
-import { tracksContext } from "../../contexts/tracks.contexts";
 import { useContext } from "react";
+import { tracksContext } from "../../contexts/tracks.contexts";
 import Track from "./Track";
+
+import SearchResults from "./SearchResults";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const {
@@ -38,7 +41,6 @@ const Search = () => {
             onChange={changeHandler}
           />
         </div>
-
         <button
           className="btn btn-secondary btn-sm btn-block mb-5 mt-3"
           type="submit"
@@ -47,8 +49,11 @@ const Search = () => {
         </button>
 
         <div className="row">
+          <h2>Search</h2>
           {searchedTrackList.map((item) => {
-            return <Track key={item.track.track_id} track={item.track} />;
+            return (
+              <SearchResults key={item.track.track_id} search={item.track} />
+            );
           })}
         </div>
       </form>

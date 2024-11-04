@@ -5,6 +5,7 @@ import NavBar from "./components/layout/Navbar";
 import Tracks from "./components/tracks/Tracks";
 import Lyrics from "./components/tracks/Lyrics";
 import Search from "./components/tracks/Search";
+import SearchLyrics from "./components/tracks/SearchLyrics";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         />
         <Route path="/lyrics/track/:id" element={<Lyrics />} />
         <Route path="/" element={<Search />} />
+        <Route path="/lyrics/searchedTracks/:id" element={<SearchLyrics />} />
       </Routes>
     </>
   );

@@ -2,15 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import { useParams } from "react-router-dom";
 import Lyric from "./Lyric";
+import DisplaySearchLyrics from "./DisplaySearchLyrics";
 
-const Lyrics = () => {
-  const { getLyrics, setLyrics, lyrics, trackList } = useContext(tracksContext);
+const SearchLyrics = () => {
+  const { lyrics, searchedTrackList, getLyrics, setLyrics } =
+    useContext(tracksContext);
   const { id } = useParams();
-  console.log("Checking Id", id);
-  console.log("checking tracklist", trackList);
 
-  const track = trackList.find((trackListItem) => {
-    return trackListItem.track.track_id === parseInt(id);
+  const trackForSearch = searchedTrackList.find((trackListItemSearch) => {
+    return trackListItemSearch.track.track_id === parseInt(id);
   });
 
   useEffect(() => {
@@ -25,10 +25,10 @@ const Lyrics = () => {
   return (
     <div>
       <h5>
-        <Lyric lyric={lyrics} track={track} />
+        <DisplaySearchLyrics lyric={lyrics} trackForSearch={trackForSearch} />
       </h5>
     </div>
   );
 };
 
-export default Lyrics;
+export default SearchLyrics;
