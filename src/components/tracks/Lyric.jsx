@@ -5,7 +5,7 @@ import Spinner from "../layout/spinner";
 import Moment from "react-moment";
 
 const Lyric = (props) => {
-  const { lyric, track, trackForSearch } = props;
+  const { lyric, track } = props;
 
   return (
     <>

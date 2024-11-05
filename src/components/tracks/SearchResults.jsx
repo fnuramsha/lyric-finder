@@ -4,7 +4,6 @@ import SearchLyrics from "./SearchLyrics";
 
 const SearchResults = (props) => {
   const { search } = props;
-  // console.log("check artist name", search.track.artist_name);
 
   return (
     <div className="col-md-6">
@@ -26,7 +25,7 @@ const SearchResults = (props) => {
             {search.album_name}{" "}
           </p>
           <Link
-            to={`lyrics/searchedTracks/${search.track_id}`}
+            to={`lyrics/searchedLyrics/${search.track_id}`}
             className="btn btn-dark btn-block"
           >
             <i className="fas fa-chevron-right"></i> View Lyrics

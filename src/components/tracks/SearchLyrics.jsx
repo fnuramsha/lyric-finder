@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import { useParams } from "react-router-dom";
-import Lyric from "./Lyric";
 import DisplaySearchLyrics from "./DisplaySearchLyrics";
 
 const SearchLyrics = () => {

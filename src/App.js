@@ -22,8 +22,8 @@ function App() {
           }
         />
         <Route path="/lyrics/track/:id" element={<Lyrics />} />
-        <Route path="/" element={<Search />} />
-        <Route path="/lyrics/searchedTracks/:id" element={<SearchLyrics />} />
+        <Route path="/lyrics/searchedTracks" element={<Search />} />
+        <Route path="/lyrics/searchedLyrics/:id" element={<SearchLyrics />} />
       </Routes>
     </>
   );
