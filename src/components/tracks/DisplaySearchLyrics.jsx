@@ -7,6 +7,10 @@ import Moment from "react-moment";
 const DisplaySearchLyrics = (props) => {
   const { lyric, trackForSearch } = props;
 
+  if (!trackForSearch || !lyric || !trackForSearch.track) {
+    return <p></p>; // Placeholder text instead of Spinner
+  }
+
   return (
     <>
       <div className="card-body">
@@ -20,6 +24,7 @@ const DisplaySearchLyrics = (props) => {
             <Link to="/" className="btn btn-dark btn-sm mb-4">
               Go back
             </Link>
+
             <div className="card">
               <div className="card-header">
                 {trackForSearch.track.track_name}

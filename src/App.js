@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/layout/Navbar";
-//import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Tracks from "./components/tracks/Tracks";
 import Lyrics from "./components/tracks/Lyrics";
 import Search from "./components/tracks/Search";
@@ -11,7 +10,7 @@ function App() {
   return (
     <>
       <NavBar />
-      {/* <Tracks /> */}
+
       <Routes>
         <Route
           path="/"
@@ -21,9 +20,9 @@ function App() {
             </>
           }
         />
-        <Route path="/lyrics/track/:id" element={<Lyrics />} />
-        <Route path="/lyrics/searchedTracks" element={<Search />} />
-        <Route path="/lyrics/searchedLyrics/:id" element={<SearchLyrics />} />
+        <Route path="lyrics/track/:id" element={<Lyrics />} />
+        <Route path="lyrics/search" element={<Search />} />
+        <Route path="lyrics/searchedLyrics/:id" element={<SearchLyrics />} />
       </Routes>
     </>
   );

@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
 import SearchResults from "./SearchResults";
 import { useNavigate } from "react-router-dom";
-//import { Link } from "react-router-dom";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ const Search = () => {
     const updatedCartList = await getSearchedLyrics(userInputValue);
     setSearchedTrackList(updatedCartList);
     console.log("searched track list", searchedTrackList);
-    navigate("/lyrics/searchedTracks");
+    navigate("/lyrics/search");
   };
 
   return (

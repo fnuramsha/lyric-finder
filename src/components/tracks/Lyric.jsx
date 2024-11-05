@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { tracksContext } from "../../contexts/tracks.contexts";
 import Spinner from "../layout/spinner";
 import Moment from "react-moment";
 
