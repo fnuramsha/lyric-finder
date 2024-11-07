@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/layout/Navbar";
 import Tracks from "./components/tracks/Tracks";
 import Lyrics from "./components/tracks/Lyrics";
-import Search from "./components/tracks/Search";
+import Search from "./components/tracks/SearchTracks";
 import SearchLyrics from "./components/tracks/SearchLyrics";
 
 function App() {

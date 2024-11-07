@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { tracksContext } from "../../contexts/tracks.contexts";
-import SearchResults from "./SearchResults";
+import SearchResults from "./DisplaySearchTracks";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
