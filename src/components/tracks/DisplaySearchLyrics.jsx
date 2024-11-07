@@ -6,10 +6,16 @@ import Moment from "react-moment";
 
 const DisplaySearchLyrics = (props) => {
   const { lyric, trackForSearch } = props;
+  const { setSearchedTrackList, userInputValue } = useContext(tracksContext);
 
   if (!trackForSearch || !lyric || !trackForSearch.track) {
     return <p></p>; // Placeholder text instead of Spinner
   }
+
+  const clearState = () => {
+    setSearchedTrackList([]);
+    userInputValue("");
+  };
 
   return (
     <>
@@ -21,7 +27,11 @@ const DisplaySearchLyrics = (props) => {
           <Spinner />
         ) : (
           <>
-            <Link to="/" className="btn btn-dark btn-sm mb-4">
+            <Link
+              to="/"
+              className="btn btn-dark btn-sm mb-4"
+              onClick={clearState}
+            >
               Go back
             </Link>
 
